@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {return view('welcome');});
 Auth::routes();
@@ -24,6 +14,7 @@ Route::group([
 ], function () {
 
 
+    // users part routes
     Route::get('/users', 'Dashboard\UserController@index')
     ->name('users');
 
@@ -38,6 +29,26 @@ Route::group([
 
     Route::get('/users/delete/{id}', 'Dashboard\UserController@destroy')
         ->name('users.delete');
+
+
+    // category part routes
+    Route::get('/categories', 'Dashboard\CategoryController@index')
+    ->name('categories');
+
+    Route::get('/categories/create', 'Dashboard\CategoryController@create')
+        ->name('categories.create');
+
+    Route::post('/categories/add', 'Dashboard\CategoryController@add')
+        ->name('categories.add');
+
+    Route::get('/categories/edit/{id}', 'Dashboard\CategoryController@edit')
+        ->name('categories.edit');
+ 
+    Route::post('/categories/update/{id}', 'Dashboard\CategoryController@update')
+        ->name('categories.update');
+
+    Route::get('/categories/delete/{id}', 'Dashboard\CategoryController@destroy')
+        ->name('categories.delete');
 
 
 });
