@@ -39,6 +39,16 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
+    public function adverses() {
+        return $this->hasMany('App\Advers');
+    }
+
+
+    public function getAdverses(){
+        return $this->adverses();
+    }
+
+
     public function getJWTIdentifier()
     {
         return $this->getKey();   
