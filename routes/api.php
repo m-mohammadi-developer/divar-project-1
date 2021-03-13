@@ -1,27 +1,27 @@
 <?php
 
 
-Route::get('/posts', [
-    'as'    => 'posts.all',
-    'uses' => 'Api\PostController@index'
-]);
 
 
-Route::get('/posts/self', [
-    'as'    => 'posts.self',
-    'uses' => 'Api\PostController@self'
-]);
 
-Route::post('/posts/create', [
-    'as'    => 'posts.store',
-    'uses' => 'Api\PostController@store'
-]);
+// Route::post('/login', "Api\Auth\AuthController@login");
 
 
-Route::post('/login', "Api\Auth\LoginController@login");
+// Route::get('/refresh', [
+//     'as'    => 'login.refresh',
+//     'uses'  => 'Api\Auth\AuthController@refresh'
+// ]);
 
+Route::group([
 
-Route::get('/refresh', [
-    'as'    => 'login.refresh',
-    'uses'  => 'Api\Auth\LoginController@refresh'
-]);
+    'middleware' => 'api',
+    // 'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'Api\Auth\AuthController@login')->name('api.login');
+    Route::post('logout', 'Api\Auth\AuthController@logout')->name('api.logout');
+    Route::post('refresh', 'Api\Auth\AuthController@refresh')->name('api.refresh');
+    Route::post('me', 'Api\Auth\AuthController@me')->name('api.user');
+
+});

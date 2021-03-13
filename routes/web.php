@@ -13,6 +13,10 @@ Route::group([
     'as'         => 'dashboard.'
 ], function () {
 
+    Route::get('/', function () {
+        return view('dashboard.main');
+    });
+
 
     // users part routes
     Route::get('/users', 'Dashboard\UserController@index')
