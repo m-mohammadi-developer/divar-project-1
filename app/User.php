@@ -45,7 +45,7 @@ class User extends Authenticatable implements JWTSubject
 
 
     public function getAdverses(){
-        return $this->adverses();
+        return $this->adverses()->where('user_id', $this->id)->get();
     }
 
 

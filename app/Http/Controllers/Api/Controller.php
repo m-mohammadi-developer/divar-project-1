@@ -20,7 +20,7 @@ class Controller extends BaseController
         try {
             $user = auth('api')->userOrFail();
         } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e) {
-            return response()->json(['error' => $e->getMessage()]);
+            return response()->json(['error' => $e->getMessage() . " :: (User Unknown)", 401]);
         }
         return $user;
     }
