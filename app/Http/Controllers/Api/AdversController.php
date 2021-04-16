@@ -8,7 +8,9 @@ use App\Http\Controllers\Api\Controller;
 
 class AdversController extends Controller
 {
+
     public function index(){
+        
         $post = (object) [
             'titile' => 'post title',
             'desc' => 'its okkkkkkk',
@@ -31,8 +33,6 @@ class AdversController extends Controller
         return response()->json(['adverses' => $post]);
     }
 
-
-
     public function store(Request $request)
     {
         $details = (object)$request->only(['name', 'description', 'price', 'category_id', 'meta_keys', 'meta_description']);
@@ -46,6 +46,7 @@ class AdversController extends Controller
         }
 
         try {
+
             $advers = Advers::create([
                 'name' => $details->name,
                 'description' => $details->description,
@@ -63,6 +64,5 @@ class AdversController extends Controller
 
         return response()->json(['advers' => $advers]);
     }
-
 
 }
