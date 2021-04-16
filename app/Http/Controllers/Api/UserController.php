@@ -7,8 +7,5 @@ use App\Http\Controllers\Api\Controller;
 
 class UserController extends Controller
 {
-    //
 
-
-    
 }
