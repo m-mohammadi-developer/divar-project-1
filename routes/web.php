@@ -5,10 +5,6 @@ Route::get('/', function () {return view('welcome');});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/log', function () {
-    return view('dashboard.auth.register');
-});
-
 Route::group([
     'middleware' => ['admin'],
     'prefix'      => 'dashboard',

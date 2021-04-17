@@ -48,7 +48,8 @@ var KTLogin = function() {
 				}
 			}
 		);
-
+/* 
+		
         $('#kt_login_signin_submit').on('click', function (e) {
             e.preventDefault();
 
@@ -81,7 +82,7 @@ var KTLogin = function() {
 		    });
         });
 
-        // Handle forgot button
+       // Handle forgot button
         $('#kt_login_forgot').on('click', function (e) {
             e.preventDefault();
             _showForm('forgot');
@@ -92,6 +93,7 @@ var KTLogin = function() {
             e.preventDefault();
             _showForm('signup');
         });
+		 */ 
     }
 
     var _handleSignUpForm = function(e) {
