@@ -172,13 +172,18 @@
                             <span class="navi-text">تنظیمات</span>
                             </a>
                         </li>
+
                         <li class="navi-separator my-3"></li>
                         <li class="navi-item">
-                            <a href="#" class="navi-link">
-                            <span class="navi-icon"><i class="flaticon2-magnifier-tool"></i></span>
-                            <span class="navi-text">راهنما</span>
+                            <a href="{{ route('logout') }}" class="navi-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <span class="navi-icon"><i class="fas fa-user-lock"></i></span>
+                                <span class="navi-text">خروج</span>
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
                         </li>
+
                         <li class="navi-item">
                             <a href="#" class="navi-link">
                             <span class="navi-icon"><i class="flaticon2-bell-2"></i></span>

@@ -1,97 +1,52 @@
 <!DOCTYPE html>
-<html direction="rtl" dir="rtl" style="direction: rtl" >
-    <!--begin::Head-->
-    <head>
-        @section('head')
+<html direction="rtl" dir="rtl" style="direction: rtl">
+<!--begin::Head-->
+
+<head>
+    @section('head')
         <base href="">
-        <meta charset="utf-8"/>
+        <meta charset="utf-8" />
         <title>
-            @if(isset($title))
-                {{ $title }}
-            @else 
-                {{ 'بخش کاربری' }}
-            @endif
+            @yield('page-title', 'بخش کاربری')
         </title>
-        <meta name="description" content="Updates and statistics"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content="Updates and statistics" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <!--begin::Fonts-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
         <!--end::Fonts-->
         <!--begin::Page Vendors Styles(used by this page)-->
-        <link href="{{ asset('plugins/custom/fullcalendar/fullcalendar.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('css/pages/login/login-4.rtl.css?v=7.0.6') }}" rel="stylesheet"
+            type="text/css" />
         <!--end::Page Vendors Styles-->
         <!--begin::Global تم Styles(used by all pages)-->
-        <link href="{{ asset('plugins/global/plugins.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('plugins/custom/prismjs/prismjs.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('css/style.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('plugins/global/plugins.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/custom/prismjs/prismjs.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet"
+            type="text/css" />
+        <link href="{{ asset('css/style.bundle.rtl.css?v=7.0.6') }}" rel="stylesheet" type="text/css" />
         <!--end::Global تم Styles-->
         <!--begin::چیدمان تم ها(used by all pages)-->
         <!--end::چیدمان تم ها-->
-        <link rel="shortcut icon" href="{{ asset('/media/logos/favicon.ico') }}"/>
-        @show
-    </head>
-    <!--end::Head-->
+        <link rel="shortcut icon" href="{{ asset('/media/logos/favicon.ico') }}" />
+    @show
+</head>
+<!--end::Head-->
 
-    <!--begin::Body-->
+<!--begin::Body-->
 
 <body id="kt_body"
     class="quick-panel-right demo-panel-right offcanvas-right header-fixed header-mobile-fixed subheader-enabled aside-enabled aside-static page-loading">
 
     <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
-        <!--begin::Login-->
-        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white"
-            id="kt_login">
-            <!--begin::Aside-->
-            <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
-                <!--begin: Aside Container-->
-                <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
-                    <!--begin::Logo-->
-                    <a href="#" class="text-center pt-2">
-                        <img src="{{ asset('media/logos/logo.png') }}" class="max-h-75px" alt="" />
-                    </a>
-                    <!--end::Logo-->
-
-                    <!--begin::Aside body-->
-                    <div class="d-flex flex-column-fluid flex-column flex-center">
-
-                        @yield('form-section')
-
-                    </div>
-                    <!--end::Aside body-->
-
-                   
-                </div>
-                <!--end: Aside Container-->
-            </div>
-            <!--begin::Aside-->
-
-            <!--begin::Content-->
-            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
-                <!--begin::Title-->
-                <div
-                    class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">شگفتی ها</h3>
-                    <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">
-                        استراتژی محصول<br />
-                        برنامه های وب
-                    </p>
-                </div>
-                <!--end::Title-->
-
-                <!--begin::Image-->
-                <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center"
-                    style="background-image: url({{ asset('media/svg/illustrations/login-visual-2.svg') }});"></div>
-                <!--end::Image-->
-            </div>
-            <!--end::Content-->
-        </div>
-        <!--end::Login-->
+        @yield('form-section')
     </div>
     <!--end::Main-->
 
 
-    <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+    <script>
+        var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+
+    </script>
     <!--begin::Global Config(global config for global JS scripts)-->
     <script>
         var KTAppSettings = {
@@ -152,6 +107,7 @@
             },
             "font-family": "Poppins"
         };
+
     </script>
     <!--end::Global Config-->
 
@@ -163,11 +119,11 @@
 
 
     <!--begin::Page Scripts(used by this page)-->
-    <script src="{{ asset('js/pages/custom/login/login-general.js?v=7.0.6') }}"></script>
+    <script src="{{ asset('js/pages/custom/login/login-4.js?v=7.0.6') }}"></script>
     <!--end::Page Scripts-->
-    
+
 </body>
 <!--end::Body-->
 
-    
+
 </html>

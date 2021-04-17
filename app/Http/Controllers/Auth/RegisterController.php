@@ -48,11 +48,28 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $message = array(
+            'name.required' => 'وارد کردن نام ضروری است',
+            'name.string' => 'لطفا نام خود را با فرمت صحیح وارد کنید',
+            'name.max' => 'طول نام حداکثر :max کاراکتر است',
+
+            'email.required' => 'وارد کردن ایمیل ضروری است',
+            'email.string|email' => 'لطفا ایمیل خود را با فرمت صحیح وارد کنید',
+            'email.unique' => 'ایمیل تکراری هست ایمیل دیگری وارد کنید',
+
+            'password.required' => 'پسورد نباید خالی باشد',
+            'password.string|confirmed' => 'پسورد را به درستي وارد نماييد',
+            'password.min' => 'طول پسورد حداقل بايد :min كاراكتر باشد',
+
+            'password_confirmation.same' => 'پسورد و تكرار آن بايد يكي باشد'
+        );
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'password' => ['required', 'string', 'min:8'],
+            'password_confirmation' => ['same:password'],
+        ], $message);
     }
 
     /**
@@ -69,4 +86,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function showRegistrationForm()
+    {
+        return view('dashboard.auth.register');
+    }
+    
 }

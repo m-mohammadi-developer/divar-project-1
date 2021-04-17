@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -36,4 +37,20 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm()
+    {
+        return view('dashboard.auth.login');
+    }
+
+
+    protected function validateLogin(Request $request)
+    {
+        $username = $this->username();
+        $request->validate([
+            $username . '.required|string' => 'ایمیل کاربر ضروری می باشد',
+            'password.required|string' => 'پسورد را وارد کنید',
+        ]);
+    }
+    
 }
