@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Dashboard;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    //
-
-
+    
     public function index()
     {
         $users = User::all();
-        $page = 'users';
+        $page = 'user.users';
         $title = 'مدیریت کاربران';
         $data = array(
             'iterable' => $users,
@@ -26,7 +25,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $page = 'edit-user';
+        $page = 'user.editUser';
         $title = "ویرایش کاربر";
         $data = array(
             'user' => $user,
@@ -40,7 +39,6 @@ class UserController extends Controller
             return $this->updatePassword($request, $id);
         }
 
-
         $validate = $request->validate([
             'user_name' => 'required|max:255',
             'user_email' => 'required|max:255',
@@ -50,16 +48,16 @@ class UserController extends Controller
 
         
         if (!$user) {
-            return redirect('dashboard.users')->with('message', 'کاربر مورد نظر یافت نشد لطفا اطلاعات صحیح وارد کنید');
+            return redirect()->route('dashboard.users')->with('message', 'کاربر مورد نظر یافت نشد لطفا اطلاعات صحیح وارد کنید');
         }
 
         $user->name = $request->user_name;
         $user->email = $request->user_email;
 
         if ($user->save()) {
-            return redirect('dashboard/users')->with('message', 'اطلاعات با موفقیت ذخیره شدند');
+            return redirect()->route('dashboard.users')->with('message', 'اطلاعات با موفقیت ذخیره شدند');
         } else {
-            return redirect('dashboard/users')->with('message', 'مشکلی در ویرایش اطلاعات پیش آمد!!! دوباره تلاش کنید');
+            return redirect()->route('dashboard.users')->with('message', 'مشکلی در ویرایش اطلاعات پیش آمد!!! دوباره تلاش کنید');
         }
     }
 
@@ -73,17 +71,17 @@ class UserController extends Controller
         $password = $request->user_pass;
         $password_confirmation = $request->user_pass_confirm;
         if ($password != $password_confirmation) {
-            return redirect('dashboard.users')->with('message', 'رمز عبور و تایید آن باید یکسان باشند');
+            return redirect()->route('dashboard.users')->with('message', 'رمز عبور و تایید آن باید یکسان باشند');
         }
         $user = User::find($id);
         if (!$user) {
-            return redirect('dashboard.users')->with('message', 'کاربر مورد نظر یافت نشد لطفا اطلاعات صحیح وارد کنید');
+            return redirect()->route('dashboard.users')->with('message', 'کاربر مورد نظر یافت نشد لطفا اطلاعات صحیح وارد کنید');
         }
 
         $user->password = Hash::make($password);
 
         if ($user->save()) {
-            return redirect('dashboard/users')->with('message', 'اطلاعات با موفقیت ذخیره شدند');
+            return redirect()->route('dashboard.users')->with('message', 'اطلاعات با موفقیت ذخیره شدند');
         }
     }
 
@@ -92,9 +90,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         
         if($user->delete()) {
-            return redirect('dashboard/users')->with('message', 'کاربر با موفقیت حذف شد');
+            return redirect()->route('dashboard.users')->with('message', 'کاربر با موفقیت حذف شد');
         }
-        return redirect('dashboard/users')->with('message', 'مشکلی در حذف اطلاعات پیش آمد!!! دوباره تلاش کنید');
+
+        return redirect()->route('dashboard.users')->with('message', 'مشکلی در حذف اطلاعات پیش آمد!!! دوباره تلاش کنید');
 
     }
 }

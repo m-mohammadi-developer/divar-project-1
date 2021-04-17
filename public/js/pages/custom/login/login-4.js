@@ -1,5 +1,5 @@
 "use strict";
-
+/* 
 // Class Definition
 var KTLogin = function() {
 	var _buttonSpinnerClasses = 'spinner spinner-right spinner-white pr-15';
@@ -49,18 +49,18 @@ var KTLogin = function() {
 				KTUtil.btnWait(formSubmitButton, _buttonSpinnerClasses, "لطفا صبر کنید");
 
 				// Simulate Ajax request
-				setTimeout(function() {
-					KTUtil.btnRelease(formSubmitButton);
-				}, 2000);
+				// setTimeout(function() {
+				// 	KTUtil.btnRelease(formSubmitButton);
+				// }, 2000);
 
 				// Form Validation & Ajax Submission: https://formvalidation.io/guide/examples/using-ajax-to-submit-the-form
-				/**
+				
 		        FormValidation.utils.fetch(formSubmitUrl, {
-		            method: 'POST',
+		            method: form.attr('method'),
 					dataType: 'json',
 		            params: {
-		                name: form.querySelector('[name="username"]').value,
-		                email: form.querySelector('[name="password"]').value,
+		                email: form.querySelector('[name="email"]').value,
+		                password: form.querySelector('[name="password"]').value,
 		            },
 		        }).then(function(response) { // Return valid JSON
 					// Release button
@@ -92,7 +92,7 @@ var KTLogin = function() {
 						});
 					}
 		        });
-				**/
+				
 		    })
 			.on('core.form.invalid', function() {
 				Swal.fire({
@@ -324,3 +324,4 @@ var KTLogin = function() {
 jQuery(document).ready(function() {
     KTLogin.init();
 });
+ */
